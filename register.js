@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } 
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification }
 from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
@@ -11,16 +11,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById("registerBtn").addEventListener("click", () => {
-  const email = emailInput.value;
-  const password = passwordInput.value;
+document.getElementById("regbutton").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Fill all fields");
+    return;
+  }
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
       sendEmailVerification(cred.user).then(() => {
-        alert("Verification email sent! Check your inbox.");
+        alert("Verification email sent!");
         window.location.href = "verify.html";
       });
     })
-    .catch(err => alert(err.message));
+    .catch((err) => alert(err.message));
 });
