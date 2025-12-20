@@ -24,7 +24,7 @@ document.getElementById("regbutton").addEventListener("click", () => {
     .then((cred) => {
       sendEmailVerification(cred.user).then(() => {
         alert("Verification email sent!");
-        window.location.href = "verify.html";
+        window.location.href = "index.html";
       });
     })
     .catch((err) => alert(err.message));
