@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberVault Dashboard</title>
+  <style>
+    body {
+      background: #0b0f14;
+      color: #00ffd5;
+      font-family: monospace;
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #00ffd5;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 CyberVault</h1>
+  <p>A Personal Secure Web Vault</p>
+
+  <!-- Protected content -->
+  <div id="content" style="display:none;">
+    <p>✅ Access Granted</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script type="module">
+    // Import Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+    // Firebase config (SAME as login page)
+    const firebaseConfig = {
+    apiKey: "AIzaSyBS4wPW29mLZtYgbSw-J4ZL7onmZIW9h5M",
+    authDomain: "private-server-1106.firebaseapp.com",
+    projectId: "private-server-1106",
+    storageBucket: "private-server-1106.firebasestorage.app",
+    messagingSenderId: "236053385324",
+    appId: "1:236053385324:web:6cb70704b0d925869fc849"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 🔐 PROTECTION LOGIC
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is logged in
+        document.getElementById("content").style.display = "block";
+      } else {
+        // Not logged in → BLOCK ACCESS
+        window.location.href = "index.html";
+      }
+    });
+
+    // Logout function
+    window.logout = function () {
+      signOut(auth).then(() => {
+        window.location.href = "index.html";
+      });
+    };
+  </script>
+
+</body>
+</html>
