@@ -50,6 +50,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-function register () {
+window.register = function () {
   window.location.href = "register.html"
 }
