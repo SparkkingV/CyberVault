@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberVault</title>
+
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+</head>
+
+<body>
+
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left">
+      <img src="logo.png" alt="Illustration" />
+    </div>
+
+    <!-- Right Section -->
+    <div class="right">
+      <div class="login-card">
+        <h2>Welcome to CyberVault</h2>
+        <p class="subtitle">Sign up to Get Started</p>
+
+        <!-- ✅ FORM START -->
+        <form onsubmit="return false;">
+
+          <div class="input-group">
+            <input type="email" id="email" placeholder="Enter Email Address" required />
+          </div>
+
+          <div class="input-group password-group">
+            <input type="password" id="password" placeholder="Password" required />
+            <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
+          </div>
+
+          <!-- ✅ BUTTON INSIDE FORM -->
+          <button type="button" onclick="register()" id="button">Register</button>
+
+        </form>
+        <!-- ✅ FORM END -->
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Correct JS loading -->
+  <script type="module" src="register.js"></script>
+
+
+    <script>
+    function togglePassword() {
+ 
+    const passwordInput = document.getElementById("password");
+    const icon = document.querySelector(".toggle-password");
+
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  }
+</script> 
+
+
+
+</body>
+</html>

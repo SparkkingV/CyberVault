@@ -1,7 +1,3 @@
-window.login = function () {
-  alert("Login button clicked");
-};
-
 // Import Firebase functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } 
@@ -53,3 +49,7 @@ onAuthStateChanged(auth, (user) => {
     window.location.href = "login.html";
   }
 });
+
+function register () {
+  window.location.href = "register.html"
+}
