@@ -46,7 +46,7 @@ window.login = function () {
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 });
 
