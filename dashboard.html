@@ -31,12 +31,18 @@
   <h1>🔐 CyberVault</h1>
   <p>A Personal Secure Web Vault</p>
 
+  <br>
+  <h3>Welcome, <span id="userEmail"></span> 👋</h3>
+  <br>
+  
   <!-- Protected content -->
   <div id="content" style="display:none;">
     <p>✅ Access Granted</p>
     <p class="pag">Welcome to CyberVault, Your Support is the key for Our Success. Thanks for Joining Us. Our Software Will be Launched Soon as a Completely Protected Vault WebPage</p>
     <button onclick="logout()">Logout</button>
   </div>
+
+    
 
   <script type="module">
     // Import Firebase
@@ -83,6 +89,14 @@
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "index.html";
+  }
+});
+ 
+onAuthStateChanged(auth, (user) => {
+  if (!user || !user.emailVerified) {
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("userEmail").innerText = user.email;
   }
 });
 
